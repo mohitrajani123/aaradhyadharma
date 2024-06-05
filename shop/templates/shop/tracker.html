@@ -1,0 +1,44 @@
+{% extends 'shop/basic.html' %}
+{% block title%} My Awesome Cart Tracker{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="col my-4">
+        <h2>Enter your Order Id</h2>
+        <form method="get" action="#" id="trackerForm">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputname">Order Id</label>
+                    <input type="text" class="form-control" id="orderId" name="orderId" placeholder="Order Id">
+                </div>
+                <!-- <div class="form-group col-md-6">
+                    <label for="inputEmail4">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                </div> -->
+                <button type="submit" class="btn btn-primary">Track Order</button>
+            </div>
+    </div>
+    <div class="col my-4">
+        <h2>Your Order Status</h2>
+        <div class="my-4">
+            <ul class="list-group" id="items">
+                <!-- Enter your order Id and Email and click Track Order to find details about your order! -->
+                <ul class="list-group" id="items">
+                    {% for d in data %}
+                    <li>
+                        <h2>{{d.update_desc}}</h2>
+                    </li>
+                    {% endfor %}
+                   
+                </ul>
+           
+            </ul>
+        </div>
+        <h2>Your Order Details</h2>
+        <div class="my-4">
+            <ul class="list-group" id="citems">
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
